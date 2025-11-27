@@ -66,12 +66,12 @@ int xdp_program(struct xdp_md *ctx) {
 		// we could technically set different values and perform e.g. routing or enforce specific network policies based on it
 		int *blocked = bpf_map_lookup_elem(&blocked_ips, &key);
 		if (blocked && *blocked) {
-			bpf_printk("%u.%u.%u.%u BLOCKED! (value=%d)",
+			bpf_printk("%u.%u.%u.%u BLOCKED!",
 				(src >> 24) & 0xFF,
 				(src >> 16) & 0xFF,
 				(src >> 8)  & 0xFF,
-				 src        & 0xFF,
-				*blocked);
+				 src        & 0xFF);
+			return XDP_DROP;
 		}
 	}
 	

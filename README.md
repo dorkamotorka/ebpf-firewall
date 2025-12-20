@@ -1,4 +1,4 @@
-# ebpf-firewall
+# eBPF-based Firewall with LPM Trie–Based IP Range Matching
 
 A tiny **XDP/eBPF firewall** that drops incoming packets when the **source IPv4** matches a **blocked CIDR range** (e.g. `192.168.178.0/24`).
 
